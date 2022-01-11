@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Text?>
+
+<VBox prefHeight="570.0" prefWidth="798.0" xmlns="http://javafx.com/javafx/8.0.261" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MainWindowController">
+  <children>
+    <MenuBar prefHeight="25.0" prefWidth="758.0" style="-fx-background-color: #FFFFFF;">
+      <menus>
+       <Menu mnemonicParsing="false" text="File">
+       	<items>
+       		<MenuItem onAction="#onChange" text="Change turing machine" />
+       		<MenuItem fx:id="saveMI" onAction="#onSave" text="Save" />
+       		<MenuItem onAction="#onDelete" text="Delete" />
+       			<SeparatorMenuItem />
+            <Menu mnemonicParsing="false" text="Speed">
+	       	 <items>
+	       	 	<MenuItem id="slow" onAction="#onSpeed" text="Slow" />
+	       		<MenuItem id="average" onAction="#onSpeed" text="Average" />      	
+	       		<MenuItem id="fast" onAction="#onSpeed" text="Fast" />
+	       	 </items>
+	       	</Menu>
+            	<SeparatorMenuItem />
+            <MenuItem onAction="#onHome" text="Home" />
+            	<SeparatorMenuItem />
+            <MenuItem onAction="#onClose" text="Close" />
+        </items>
+       </Menu>           
+       <Menu text="Help">
+        <items>
+            <MenuItem fx:id="commentMI" onAction="#onComment" text="Comment" />
+            	<SeparatorMenuItem />
+            <MenuItem onAction="#onHowToUse" text="How to use" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+      
+      <GridPane prefHeight="574.0" prefWidth="772.0">
+        <columnConstraints>
+          <ColumnConstraints maxWidth="326.0" minWidth="10.0" prefWidth="269.0" />
+          <ColumnConstraints maxWidth="529.0" minWidth="10.0" prefWidth="529.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>   
+         <children>  
+              
+            <Pane prefHeight="545.0" prefWidth="249.0" style="-fx-background-color: #58c6c7;" GridPane.columnIndex="0">
+               <children>
+                  <Text fx:id="loadMessage" fill="RED" layoutX="22.0" layoutY="50.0" />              
+                
+                  <Label layoutX="19.0" layoutY="67.0" text="TM Name" />
+                  <TextField fx:id="nameTF" layoutX="141.0" layoutY="54.0" prefHeight="25.0" prefWidth="111.0" />
+                                    
+                  <Label layoutX="19.0" layoutY="111.0" text="Initial state" />
+                  <TextField fx:id="initStateTF" layoutX="142.0" layoutY="101.0" prefHeight="25.0" prefWidth="111.0" />
+                  
+                  <Label layoutX="21.0" layoutY="159.0" text="Final states" />
+                  <TextField fx:id="finalStatesTF" layoutX="141.0" layoutY="148.0" prefHeight="25.0" prefWidth="111.0" />
+
+                  <Label layoutX="21.0" layoutY="203.0" text="Blank" />
+                  <TextField fx:id="blankTF" layoutX="141.0" layoutY="195.0" prefHeight="25.0" prefWidth="111.0" />
+                  
+                  <Label layoutX="22.0" layoutY="247.0" text="Transitions" />
+                  <TextArea fx:id="transitionsTA" layoutX="26.0" layoutY="284.0" prefHeight="200.0" prefWidth="217.0" />
+                  
+                  <Button fx:id="loadButton" layoutX="107.0" layoutY="499.0" onAction="#onLoad" text="Load" />
+                  <Button fx:id="modifyButton" layoutX="101.0" layoutY="499.0" onAction="#onModify" mnemonicParsing="false" text="Modify" />              
+               </children>
+            </Pane>
+                       
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #222d40;" GridPane.columnIndex="1">
+               <children>
+                  
+                  <ScrollPane id="tapeSP" layoutX="15.0" layoutY="126.0" prefHeight="50.0" prefWidth="494.0">
+                     <content>
+                        <HBox maxWidth="492.0" prefHeight="35.0" prefWidth="492.0" style="-fx-background-color: #FFFFFF;">
+                           <children>
+                              <Text fx:id="rightTapeText" />
+                              <Text fx:id="currentTapeText" fill="#be0000" />
+                              <Text fx:id="leftTapeText" />
+                           </children>
+                        </HBox>
+                     </content>
+                  </ScrollPane>
+                                 
+                  <Circle fill="#FFFFFF" layoutX="266.0" layoutY="227.0" radius="29.0" />
+                  <Text fx:id="currentStateText" disable="true" layoutX="246.0" layoutY="233.0" textAlignment="CENTER" wrappingWidth="40.13671875" />
+                        
+                  <Button fx:id="nextStepButton" disable="true" layoutX="136.0" layoutY="295.0" onAction="#onNextStep" text="Next Step" />
+                  <Button fx:id="haltButton" disable="true" layoutX="324.0" layoutY="295.0" onAction="#onHalt" text="Halt" />
+                  
+                  <Separator layoutY="382.0" prefHeight="3.0" prefWidth="529.0" style="-fx-background-color: #FFE4B5;" />
+                  
+                  <Label layoutX="53.0" layoutY="452.0" text="Word" />                 
+                  <TextField fx:id="wordTF" layoutX="130.0" layoutY="440.0" prefHeight="31.0" prefWidth="238.0" />
+                  
+                  <Button fx:id="initializeTapeButton" disable="true" layoutX="381.0" layoutY="450.0" onAction="#onInitializeTape" text="Initialize tape" />
+                  <Text fx:id="resultText" layoutX="363.0" layoutY="203.0" />
+                  
+               </children>
+         	</Pane>
+         	
+         </children>
+      </GridPane>
+      
+  </children>
+</VBox>

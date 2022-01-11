@@ -1,0 +1,59 @@
+.label {
+    -fx-font-family: System;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 20.0;
+    -fx-font-weight: Bold;
+}
+
+.menu .label{
+	-fx-font-family: System;
+	-fx-text-fill: #000000;
+	-fx-font-size: 12.0;
+	-fx-font-weight: lighter;
+}
+
+.button{
+	-fx-font-family: System;
+    -fx-text-fill:  #FFFFFF;
+    -fx-font-size: 15.0;
+    -fx-font-weight: Bold;	
+    -fx-background-color: #58c6c7;
+}
+
+#loadButton, #modifyButton{
+	-fx-background-color: #222d40;
+}
+ 
+.text-field, #transitionsTA{
+	-fx-font-family: System;
+    -fx-font-size: 16.0;
+    -fx-border-width: 0 0 3 0; 
+    -fx-background-color: #58c6c7; 
+    -fx-border-color: #FFFFFF; 
+    -fx-text-fill: #222d40;
+}
+
+#transitionsTA{
+	-fx-border-width: 0 0 0 0; 
+}
+
+#wordTF{
+	-fx-background-color: #222d40; 
+	-fx-text-fill: #FFFFFF;
+}
+
+#rightTapeText, #currentTapeText, #leftTapeText{
+	-fx-font-size: 20.0;
+	-fx-font-family: System;
+}
+
+#currentStateText, #resultText{
+	-fx-font-size: 18.0;
+	-fx-font-family: System;
+	-fx-font-weight: Bold;	
+}
+
+#tapeSP{
+	-fx-background: #222d40;
+	-fx-background-color: #222d40;
+}
